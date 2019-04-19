@@ -12,12 +12,18 @@ public:
     void read();
     void update();
     byte isCardPresent();
-    void setCardPresence();
+    void setCardPresent();
+    void setCardAbsent();
     void getUID(byte* uid);
 
 private:
     byte card;
     byte uid[8];
+    boolean readcmd;
+    boolean pinset;
+
+    int buttonPin;
+    boolean setcard;
 };
 
 #endif

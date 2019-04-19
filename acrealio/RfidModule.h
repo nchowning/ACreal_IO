@@ -11,8 +11,9 @@ public:
     virtual void read();
     virtual void update();
     virtual byte isCardPresent();
+    virtual void setCardPresent();
+    virtual void setCardAbsent();
     virtual void getUID(byte* uid);
 };
 
 #endif
-

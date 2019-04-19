@@ -12,6 +12,8 @@ public:
     void read();
     void update();
     byte isCardPresent();
+    void setCardPresent();
+    void setCardAbsent();
     void getUID(byte* uid);
 
 private:
@@ -30,4 +32,3 @@ private:
 };
 
 #endif
-

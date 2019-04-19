@@ -244,7 +244,7 @@ boolean RR10::cmdUpdate()
 
 }
 
-
-
-
-
+void RR10::setCardPresent()
+{}
+void RR10::setCardAbsent()
+{}

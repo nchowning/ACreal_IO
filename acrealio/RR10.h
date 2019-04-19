@@ -12,6 +12,8 @@ public:
     void read();
     void update();
     byte isCardPresent();
+    void setCardPresent();
+    void setCardAbsent();
     void getUID(byte* uid);
 private:
     void sendCmd(byte* cmd);
@@ -35,4 +37,3 @@ private:
 };
 
 #endif
-

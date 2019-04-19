@@ -5,8 +5,8 @@
 
 #define RFID_BAUD 115200		//Baud rate for RFID Module
 
-#define RFID_MODULE1 1			//Rfid module used for reader1, 1:SL015M 2:RR10
-#define RFID_MODULE2 1			//Rfid module used for reader2, 1:SL015M 2:RR10
+#define RFID_MODULE1 3			//Rfid module used for reader1, 1:SL015M 2:RR10 3:VirtualRfid
+#define RFID_MODULE2 1			//Rfid module used for reader2, 1:SL015M 2:RR10 3:VirtualRfid
 
 #define SDVX_VOL_SENS 7        //Sensitivity for SDVX Volume buttons
 
@@ -20,7 +20,7 @@
 #define BT_D A5
 #define BT_START 52
 #define BT_TEST 50
-#define BT_SVC 48
+#define BT_SVC 20
 
 //input pins for volume encoders (phase A and phase B for each)
 #define VOLR_A 36
@@ -87,7 +87,7 @@ COL C  COL B  COL A
 
 
 //pins for card reader 1 RFID Module
-#define R1_DET 20
+#define R1_DET 48
 #define R1_SER Serial1
 
 //pins for card reader 2 keypad (colls ABC, rows 1234)
@@ -105,4 +105,3 @@ COL C  COL B  COL A
 #define R2_SER Serial2
 
 #endif
-

@@ -130,3 +130,7 @@ void SL015M::getUID(byte* uida)
     memcpy(uida,uid,8);
 }
 
+void SL015M::setCardPresent()
+{}
+void SL015M::setCardAbsent()
+{}

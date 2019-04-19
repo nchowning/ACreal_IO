@@ -5,11 +5,25 @@ VirtRfid::VirtRfid()
 {
     card = 0;
     readcmd = false;
-    cardscan = false;
+    pinset = false;
+
+    uid[0] = 0xE0;
+    uid[1] = 0x04;
+    uid[2] = 0x00;
+    uid[3] = 0x00;
+    uid[4] = 0x00;
+    uid[5] = 0x00;
+    uid[6] = 0x00;
+    uid[7] = 0x00;
 }
 
 void VirtRfid::setPins(int sensor, HardwareSerial* serialid)
 {
+    buttonPin = sensor;
+    pinMode(buttonPin, INPUT);
+    digitalWrite(buttonPin, HIGH);
+
+    pinset = true;
 }
 
 void VirtRfid::read()
@@ -19,20 +33,18 @@ void VirtRfid::read()
 
 void VirtRfid::update()
 {
+    if (!pinset)
+        return;
+
     if (!readcmd)
         return;
 
-    if (cardscan)
-    {
-        card = 1;
-        readcmd = false;
-        cardscan = false;
-    }
-    else
-    {
+    if (digitalRead(buttonPin))
         card = 0;
-        readcmd = false;
-    }
+    else
+        card = 1;
+
+    readcmd = false;
 }
 
 byte VirtRfid::isCardPresent()
@@ -43,11 +55,16 @@ byte VirtRfid::isCardPresent()
 void VirtRfid::setCardPresent()
 {
     // This gets triggered in Reader.cpp when the unused keypad key is pressed
-    cardscan = true;
+    setcard = true;
 }
 
-void VirtRfid::getUID(byte* uid)
+void VirtRfid::setCardAbsent()
 {
-    01 2E 48 C2 3C 97 BA 94
-    memcpy(uid, (const byte [8]){0x01, 0x2E, 0x48, 0xC2, 0x3C, 0x97, 0xBA, 0x94}, 8);
+    // This gets triggered in Reader.cpp when the unused keypad key is pressed
+    setcard = false;
+}
+
+void VirtRfid::getUID(byte* uida)
+{
+    memcpy(uida, uid, 8);
 }

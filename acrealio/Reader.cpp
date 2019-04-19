@@ -104,6 +104,8 @@ void Reader::readKeypad()
     //simulate card with unused key
     if(keypad & 0x0100) // if unused key is pressed
         rfmodule->setCardPresent();
+    else
+        rfmodule->setCardAbsent();
 
 }
 
@@ -378,4 +380,3 @@ short Reader::processRequest(byte* request, byte* answer)
 
 
 }
-
