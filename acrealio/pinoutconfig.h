@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define GAMETYPE 1               //0:pop'n with card dispenser 1: pop'n, drummania(1 reader) 2:iidx/ddr sd/gf(2readers) 3:jubeat (1reader+Ledboard) 4: sdvx (1reader+ioboard) 5: ddr hd (2readers + ??? board)
+#define GAMETYPE 4               //0:pop'n with card dispenser 1: pop'n, drummania(1 reader) 2:iidx/ddr sd/gf(2readers) 3:jubeat (1reader+Ledboard) 4: sdvx (1reader+ioboard) 5: ddr hd (2readers + ??? board)
 
 #define RFID_BAUD 115200		//Baud rate for RFID Module
 
@@ -58,9 +58,9 @@
 #define LED5_G 45
 #define LED5_B 44
 
-#define LED6_R A8
+#define LED6_R A10
 #define LED6_G A9
-#define LED6_B A10
+#define LED6_B A8
 //pins for card reader 1 keypad (colls ABC, rows 1234)
 /*
 ### Keypad 3x4 Matrix ###
@@ -77,9 +77,9 @@
 COL C  COL B  COL A
 
 */
-#define K1_A 27
+#define K1_A 23
 #define K1_B 25
-#define K1_C 23
+#define K1_C 27
 #define K1_1 29
 #define K1_2 31
 #define K1_3 33
