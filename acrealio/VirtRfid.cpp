@@ -4,47 +4,23 @@
 VirtRfid::VirtRfid()
 {
     card = 0;
-    readcmd = false;
-    pinset = false;
-
-    uid[0] = 0xE0;
-    uid[1] = 0x04;
-    uid[2] = 0x00;
-    uid[3] = 0x00;
-    uid[4] = 0x00;
-    uid[5] = 0x00;
-    uid[6] = 0x00;
-    uid[7] = 0x00;
+    readernum = 1;
 }
 
 void VirtRfid::setPins(int sensor, HardwareSerial* serialid)
 {
-    buttonPin = sensor;
-    pinMode(buttonPin, INPUT);
-    digitalWrite(buttonPin, HIGH);
-
-    pinset = true;
+    if (sensor == R1_DET)
+        readernum = 1;
+    else
+        readernum = 2;
 }
 
 void VirtRfid::read()
 {
-    readcmd = true;
 }
 
 void VirtRfid::update()
 {
-    if (!pinset)
-        return;
-
-    if (!readcmd)
-        return;
-
-    if (digitalRead(buttonPin))
-        card = 0;
-    else
-        card = 1;
-
-    readcmd = false;
 }
 
 byte VirtRfid::isCardPresent()
@@ -55,16 +31,22 @@ byte VirtRfid::isCardPresent()
 void VirtRfid::setCardPresent()
 {
     // This gets triggered in Reader.cpp when the unused keypad key is pressed
-    setcard = true;
+    card = 1;
 }
 
 void VirtRfid::setCardAbsent()
 {
     // This gets triggered in Reader.cpp when the unused keypad key is pressed
-    setcard = false;
+    card = 0;
 }
 
-void VirtRfid::getUID(byte* uida)
+void VirtRfid::getUID(byte* uid)
 {
-    memcpy(uida, uid, 8);
+    // TODO Read card IDs from pinouts file
+    if (readernum == 1)
+        // Player 1 Card
+        memcpy(uid, (const byte [8]){0x01, 0x2E, 0x48, 0xC2, 0x3C, 0x97, 0xBA, 0x94}, 8);
+    else
+        // Player 2 Card
+        memcpy(uid, (const byte [8]){0xE0, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, 8);
 }

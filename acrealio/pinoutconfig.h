@@ -20,7 +20,7 @@
 #define BT_D A5
 #define BT_START 52
 #define BT_TEST 50
-#define BT_SVC 20
+#define BT_SVC 48
 
 //input pins for volume encoders (phase A and phase B for each)
 #define VOLR_A 36
@@ -87,7 +87,7 @@ COL C  COL B  COL A
 
 
 //pins for card reader 1 RFID Module
-#define R1_DET 48
+#define R1_DET 20
 #define R1_SER Serial1
 
 //pins for card reader 2 keypad (colls ABC, rows 1234)

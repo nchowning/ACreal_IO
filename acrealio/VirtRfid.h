@@ -18,12 +18,7 @@ public:
 
 private:
     byte card;
-    byte uid[8];
-    boolean readcmd;
-    boolean pinset;
-
-    int buttonPin;
-    boolean setcard;
+    int readernum;
 };
 
 #endif
